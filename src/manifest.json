@@ -1,6 +1,6 @@
 {
   "name": "Sample",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "manifest_version": 2,
   "description": "Super Musasi",
   "content_scripts": [{
