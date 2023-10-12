@@ -1,0 +1,206 @@
+下記のHTMLに対して、動くスクリプトを作成している。追加実装を行いなさい。
+[現在の機能]
+下記のHTMLに対して、常に判定を行い、idがquestionsItemsの中の要素にspanのclassがselectedの物が現れたら、アラートを表示するJavaScriptが作成されています。
+
+[追加する機能]
+このスクリプトに終了処理を追加してください。
+//*[@id="btn_answersAndGuidance"]/imgの画像をクリックしてから終了します。
+
+[javascript]
+// ページが読み込まれたときに実行
+window.addEventListener('load', function () {
+    // 定期的に確認するインターバルを設定 (例: 0.1秒ごと)
+    var interval = setInterval(checkForSelectedSpan, 100);
+
+    function checkForSelectedSpan() {
+        // idがquestionsItemsの要素を取得
+        var questionsItems = document.getElementById('questionsItems');
+
+        // questionsItems内のすべてのspan要素を取得
+        var spans = questionsItems.querySelectorAll('span');
+
+        // 選択されたspanが存在するか確認
+        var selectedSpan = Array.from(spans).find(span => span.classList.contains('selected'));
+
+        // 選択されたspanが存在する場合、アラートを表示
+        if (selectedSpan) {
+            window.alert('選択されたスパンが見つかりました！');
+            // 監視を停止
+            clearInterval(interval);
+        }
+    }
+
+    // 「正解と解説」ボタンの要素を取得
+    var answersAndGuidanceButton = document.getElementById('btn_answersAndGuidance');
+    
+    // ボタンがクリックされたら監視を停止
+    answersAndGuidanceButton.addEventListener('click', function() {
+        clearInterval(interval);
+    });
+});
+
+
+
+[HTML]
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja"><!--<![endif]--><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-Ua-Compatible" content="IE=EmulateIE9">
+<meta http-equiv="content-style-type" content="text/css">
+<meta http-equiv="content-script-type" content="text/javascript">
+<meta name="author" content="株式会社ノイマン">
+<meta name="robots" content="noindex,nofollow">
+<title>教習項目別問題 | 練習問題 | 自習 | MUSASI</title>
+<!-- CSS -->
+<link rel="stylesheet" type="text/css" media="screen" href="/css/common/core/foundation.css?v=1.8.12">
+<link rel="stylesheet" type="text/css" media="screen" href="/css/frontend/pc/common/base.css?v=1.8.12">
+<link rel="stylesheet" type="text/css" media="screen" href="/css/frontend/pc/common/modules.css?v=1.8.12">
+<link rel="stylesheet" type="text/css" media="screen" href="/css/common/prettyLoader.css?v=1.8.12">
+<link rel="stylesheet" type="text/css" media="screen" href="/css/frontend/pc/modules/questionTwoSelection.css?v=1.8.12">
+<link rel="stylesheet" type="text/css" media="screen" href="/css/frontend/pc/question/questionSuccess.css?v=1.8.12">
+<!-- JAVASCRIPT -->
+<script type="text/javascript" src="/js/common/libs/jquery-1.4.2.min.js?v=1.8.12"></script>
+<script type="text/javascript" src="/js/common/libs/jquery-ui.1.8.12.min.js?v=1.8.12"></script>
+<script type="text/javascript" src="/js/common/libs/jquery.colorbox-min.js?v=1.8.12"></script>
+<script type="text/javascript" src="/js/common/libs/jquery.plugins.js?v=1.8.12"></script>
+<script type="text/javascript" src="/js/common/libs/jquery.rollover.js?v=1.8.12"></script>
+<script type="text/javascript" src="/js/frontend/pc/common/common.js?v=1.8.12"></script>
+<script type="text/javascript" src="/js/common/libs/jquery.disableOnSubmit.js?v=1.8.12"></script>
+<script type="text/javascript" src="/js/common/libs/jquery.timer.js?v=1.8.12"></script>
+<script type="text/javascript" src="/js/common/libs/jquery.jplayer.min.js?v=1.8.12"></script>
+<script type="text/javascript" src="/js/common/libs/jquery.mCustomScrollbar.js?v=1.8.12"></script>
+<script type="text/javascript" src="/js/common/libs/jquery.prettyLoader.js?v=1.8.12"></script>
+<script type="text/javascript" src="/js/frontend/pc/question/questionSuccess.js?v=1.8.12"></script>
+<script type="text/javascript" src="/js/frontend/pc/question/loader.js?v=1.8.12"></script>
+<script type="text/javascript"><!--
+$(function() {
+	setTimeout(function() {
+		$("body > *").hide();
+		location.href = "/logout";
+	}, 3000000);
+});
+//--></script>
+<script src="chrome-extension://mooikfkahbdckldjjndioackbalphokd/assets/prompt.js"></script></head>
+<body class="bgPink vsc-initialized"><div id="cboxOverlay" style="display: none;"></div><div id="colorbox" class="" style="padding-bottom: 0px; padding-right: 0px; display: none;"><div id="cboxWrapper" style=""><div style=""><div id="cboxTopLeft" style="float: left;"></div><div id="cboxTopCenter" style="float: left;"></div><div id="cboxTopRight" style="float: left;"></div></div><div style="clear: left;"><div id="cboxMiddleLeft" style="float: left;"></div><div id="cboxContent" style="float: left;"><div id="cboxLoadedContent" class="" style="width: 0px; height: 0px; overflow: hidden;"></div><div id="cboxLoadingOverlay" class="" style=""></div><div id="cboxLoadingGraphic" class="" style=""></div><div id="cboxTitle" class="" style=""></div><div id="cboxCurrent" class="" style=""></div><div id="cboxNext" class="" style=""></div><div id="cboxPrevious" class="" style=""></div><div id="cboxSlideshow" class="" style=""></div><div id="cboxClose" class="" style=""></div></div><div id="cboxMiddleRight" style="float: left;"></div></div><div style="clear: left;"><div id="cboxBottomLeft" style="float: left;"></div><div id="cboxBottomCenter" style="float: left;"></div><div id="cboxBottomRight" style="float: left;"></div></div></div><div style="position: absolute; width: 9999px; visibility: hidden; display: none;"></div></div>
+	<div id="wrap">
+		<div id="stage" class="ja">
+						<div id="question201">
+					
+		<div id="header" class="clearfix">
+												<p class="location">練習問題&nbsp;&gt;&nbsp;教習項目別問題</p>															<div class="buttons">
+		<a id="btn_finish" href="/question/2.html"><img class="imgHover" width="130" height="40" alt="解答終了" src="/images/frontend/pc/ja/header/button.finish.png"></a>	</div>
+			</div><!--/#header -->
+					
+
+
+
+
+<div id="contents">
+	<div id="question">
+		<p class="title">問2</p>
+		<div class="body">
+			<div class="innerblock">
+												
+<div id="questionContainer">
+	<div class="customScrollBox">
+		<div class="container" style="top: 0px;">
+			<div class="content">
+													<p class="noBoth" style="display: none;">
+						同一方向に二つの車両通行帯があるときは、交通量の少ない通行帯を選んで走行した方が交通の安全と円滑につながる。					</p>
+					<p class="hasRuby" style="display: none;">
+						<ruby><rb>同一方向</rb><rp>(</rp><rt>どういつほうこう</rt><rp>)</rp></ruby>に<ruby><rb>二</rb><rp>(</rp><rt>ふた</rt><rp>)</rp></ruby>つの<ruby><rb>車両通行帯</rb><rp>(</rp><rt>しゃりょうつうこうたい</rt><rp>)</rp></ruby>があるときは、<ruby><rb>交通量</rb><rp>(</rp><rt>こうつうりょう</rt><rp>)</rp></ruby>の<ruby><rb>少</rb><rp>(</rp><rt>すく</rt><rp>)</rp></ruby>ない<ruby><rb>通行帯</rb><rp>(</rp><rt>つうこうたい</rt><rp>)</rp></ruby>を<ruby><rb>選</rb><rp>(</rp><rt>えら</rt><rp>)</rp></ruby>んで<ruby><rb>走行</rb><rp>(</rp><rt>そうこう</rt><rp>)</rp></ruby>した<ruby><rb>方</rb><rp>(</rp><rt>ほう</rt><rp>)</rp></ruby>が<ruby><rb>交通</rb><rp>(</rp><rt>こうつう</rt><rp>)</rp></ruby>の<ruby><rb>安全</rb><rp>(</rp><rt>あんぜん</rt><rp>)</rp></ruby>と<ruby><rb>円滑</rb><rp>(</rp><rt>えんかつ</rt><rp>)</rp></ruby>につながる。					</p>
+					<p class="hasLink" style="display: none;">
+						同一方向に二つの<a href="/term/313/explanation?return_path=%2Fquestion%2F2.html">車両通行帯</a>があるときは、交通量の少ない通行帯を選んで走行した方が交通の安全と円滑につながる。					</p>
+					<p class="hasBoth" style="display: block;">
+						<ruby><rb>同一方向</rb><rp>(</rp><rt>どういつほうこう</rt><rp>)</rp></ruby>に<ruby><rb>二</rb><rp>(</rp><rt>ふた</rt><rp>)</rp></ruby>つの<ruby><rb><a href="/term/313/explanation?return_path=%2Fquestion%2F2.html">車両通行帯</a></rb><rp>(</rp><rt>しゃりょうつうこうたい</rt><rp>)</rp></ruby>があるときは、<ruby><rb>交通量</rb><rp>(</rp><rt>こうつうりょう</rt><rp>)</rp></ruby>の<ruby><rb>少</rb><rp>(</rp><rt>すく</rt><rp>)</rp></ruby>ない<ruby><rb>通行帯</rb><rp>(</rp><rt>つうこうたい</rt><rp>)</rp></ruby>を<ruby><rb>選</rb><rp>(</rp><rt>えら</rt><rp>)</rp></ruby>んで<ruby><rb>走行</rb><rp>(</rp><rt>そうこう</rt><rp>)</rp></ruby>した<ruby><rb>方</rb><rp>(</rp><rt>ほう</rt><rp>)</rp></ruby>が<ruby><rb>交通</rb><rp>(</rp><rt>こうつう</rt><rp>)</rp></ruby>の<ruby><rb>安全</rb><rp>(</rp><rt>あんぜん</rt><rp>)</rp></ruby>と<ruby><rb>円滑</rb><rp>(</rp><rt>えんかつ</rt><rp>)</rp></ruby>につながる。					</p>
+							</div>
+		</div>
+		<div class="dragger_container" style="display: none;">
+			<div class="dragger" style="top: 0px; display: none;"></div>
+		</div>
+	</div>
+	<a href="javascript:void(0)" class="scrollUpBtn" style="display: none;"></a>
+	<a href="javascript:void(0)" class="scrollDownBtn" style="display: none;"></a>
+</div><!--/#questionContainer -->
+<div id="imageContainer">
+		</div><!--/#imageContainer -->
+<form id="form_question" action="/question/2.html" method="post">
+	<a id="resultURL" style="display:none;" onclick="var f = document.createElement('form'); f.style.display = 'none'; this.parentNode.appendChild(f); f.method = 'post'; f.action = this.href;var m = document.createElement('input'); m.setAttribute('type', 'hidden'); m.setAttribute('name', '_csrf_token'); m.setAttribute('value', 'bbf3d900773f9063bcc9f867ccb843f4'); f.appendChild(m);f.submit();return false;" href="/result">/result</a>	<input type="hidden" name="question_answer[answerd_at]" id="question_answer_answerd_at"><input type="hidden" name="question_answer[id]" id="question_answer_id"><input type="hidden" name="question_answer[_csrf_token]" value="cc256a4d1e36d4cd2b67b21e91778bfb" id="question_answer__csrf_token">		<div id="questionsItems" class="clearfix">
+		<a class="btn_true" href="javascript:void(0)"><span>○</span></a>
+		<a class="btn_false" href="javascript:void(0)"><span>×</span></a>
+					<a id="btn_unsure" href="javascript:void(0)">
+				<img id="btn_unsure_false" class="imgHover" width="124" height="44" alt="まよった" src="/images/frontend/pc/ja/common/button/button.unsure.png">				<img id="btn_unsure_true" class="imgHover" width="124" height="44" alt="まよった" src="/images/frontend/pc/ja/common/button/button.unsure.checked.png" style="display: none;">			</a>
+						<ul class="radio_list"><li><input name="question_answer[answer]" type="radio" value="0" id="question_answer_answer_0">&nbsp;<label for="question_answer_answer_0">○</label></li>
+<li><input name="question_answer[answer]" type="radio" value="1" id="question_answer_answer_1">&nbsp;<label for="question_answer_answer_1">×</label></li></ul>												<input type="checkbox" name="question_answer[is_hesitated]" id="question_answer_is_hesitated">						</div>
+	<p id="transferButtons">
+					<a id="btn_answersAndGuidance" href="javascript:void(0)"><img src="/images/frontend/pc/ja/question/button.answersAndGuidance.png" width="200" height="35" alt="正解と解説" class="imgHover"></a>
+			<input type="submit" name="answer" alt="正解と解説" value="正解と解説" style="display: none;">
+			</p>
+	<p id="langChanger">
+									</p>
+</form>			</div>
+		</div>
+	</div><!-- /#question -->
+</div><!-- /#contents -->
+<img id="loader" style="display: none" src="/images/common/prettyLoader/ajax-loader.gif">					
+		<div id="footer" class="clearfix">
+							<div class="colLeft">
+	<p class="loginAccount">
+		タカヤ ソラ<span class="suffix">さん</span>
+	</p><!--/.loginAccount -->
+		<div id="functionButtons" class="buttons">
+		<a id="hasSound" style="display: none;">1</a>
+		<a id="hasRuby" style="display: none;">1</a>
+		<a id="hasTerm" style="display: none;">1</a>
+									<a id="btn_sounds_on" href="/question/feature/f_sound?off"><img width="160" height="35" alt="音声をオフ" class="imgHover" src="/images/frontend/pc/ja/footer/button.sounds.on.png"></a><a id="btn_sounds_off" href="/question/feature/f_sound?on" style="display: none;"><img width="160" height="35" alt="音声をオン" class="imgHover" src="/images/frontend/pc/ja/footer/button.sounds.off.png"></a>										<a id="btn_rubies_on" href="/question/feature/f_ruby?off"><img width="160" height="35" alt="ルビをオフ" class="imgHover" src="/images/frontend/pc/ja/footer/button.rubies.on.png"></a><a id="btn_rubies_off" href="/question/feature/f_ruby?on" style="display: none;"><img width="160" height="35" alt="ルビをオン" class="imgHover" src="/images/frontend/pc/ja/footer/button.rubies.off.png"></a>										<a id="btn_wordsLinks_on" href="/question/feature/f_term?off"><img width="160" height="35" alt="用語をオフ" class="imgHover" src="/images/frontend/pc/ja/footer/button.wordsLinks.on.png"></a><a id="btn_wordsLinks_off" href="/question/feature/f_term?on" style="display: none;"><img width="160" height="35" alt="用語をオン" class="imgHover" src="/images/frontend/pc/ja/footer/button.wordsLinks.off.png"></a>						</div>
+	<div id="playList" style="display:none">
+		<ul>
+										<li>/uploads/sounds/system/question/N00468_q.mp3</li>
+					</ul>
+	</div>
+	<div class="jp-audio" style="position:absolute;top:-9999px;">
+		<div class="jp-type-single">
+			<div id="sounds" class="jp-jplayer" style="background-color: rgb(0, 0, 0);"><img id="jp_poster_0" style="width: 640px; height: 480px; display: none;"><audio id="jp_audio_0" preload="metadata" src="/uploads/sounds/system/question/N00468_q.mp3"></audio></div>
+			<div id="jp_interface_1" class="jp-interface">
+				<div class="jp-video-play" style="display: none;"></div>
+				<ul class="jp-controls">
+					<li><a href="#" class="jp-play" tabindex="1" style="display: block;">Play</a></li>
+					<li><a href="#" class="jp-pause" tabindex="1" style="display: none;">pause</a></li>
+					<li><a href="#" class="jp-stop" tabindex="1">stop</a></li>
+					<li><a href="#" class="jp-mute" tabindex="1">mute</a></li>
+					<li><a href="#" class="jp-unmute" tabindex="1" style="display: none;">unmute</a></li>
+				</ul>
+				<div class="jp-progress">
+					<div class="jp-seek-bar" style="width: 100%;">
+						<div class="jp-play-bar" style="width: 0%;"></div>
+					</div>
+				</div>
+				<div class="jp-volume-bar">
+					<div class="jp-volume-bar-value" style="width: 80%;"></div>
+				</div>
+				<div class="jp-current-time">00:00</div>
+				<div class="jp-duration">00:11</div>
+			</div>
+			<div id="jp_playlist_1" class="jp-playlist">
+				<ul>
+					<li></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="colRight">
+		</div>
+					</div><!--/#footer -->
+				</div>
+		</div><!-- /#stage -->
+	</div>
+
+
+<div id="yt_article_summary_widget_wrapper" class="yt_article_summary_widget_wrapper" style="display: none;">
+        <div id="yt_article_summary_widget" class="yt_article_summary_widget"><svg style="filter: brightness(0.8);" width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <mask id="path-1-outside-1_3606_3145" maskUnits="userSpaceOnUse" x="1" y="1" width="22" height="22" fill="black">
+                <rect fill="white" x="1" y="1" width="22" height="22"></rect>
+                <path d="M20.6816 10.753Z" stroke="#828282" stroke-width="0.2" mask="url(#path-1-outside-1_3606_3145)"></path>
+            </svg></div>
+        <div id="yt_article_summary_close_button" class="yt_article_summary_close_button">×</div>
+    </div></body></html>
