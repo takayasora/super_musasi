@@ -1,45 +1,51 @@
-下記のHTMLに対して、動くスクリプトを作成している。追加実装を行いなさい。
+下記のHTMLに対して、動くスクリプトを作成している。修正実装を行いなさい。
+
 [現在の機能]
 下記のHTMLに対して、常に判定を行い、idがquestionsItemsの中の要素にspanのclassがselectedの物が現れたら、アラートを表示するJavaScriptが作成されています。
 このスクリプトが監視を終了したら、下記の画像をクリックしている。
 <a id="btn_answersAndGuidance" href="javascript:void(0)"><img src="/images/frontend/pc/ja/question/button.answersAndGuidance.png" width="200" height="35" alt="正解と解説" class="imgHover"></a>
-checkForSelectedSpanが終了したら、次にcheckforokを開始し、正解と不正解どちらの画像が表示されているかをみて、正解か不正解かを出力している
-正解か不正解の画像が表示されるまで、繰り替えし探索し、もしどちらが表示されているかわかれば、メッセージを出力する処理を行います。
 
-[追加する機能]
-もし正解が表示されていれば、下記のhtmlの画像をクリックして終了します。
-<img src="/images/frontend/pc/ja/common/button/button.nextQuestion.png" width="120" height="35" alt="次の問題" class="imgHover">
+[修正する機能]
+表示するURLから取得した画像はどのHTMLの要素よりも上に表示してください。
+現在はほかの要素に隠れてしまい、見えていません。
 
 [javascript]
 window.addEventListener('load', function () {
+    // PNGファイルを表示
+    var imageUrl = 'https://github.com/takayasora/super_musasi/raw/main/src/resource/speedup.png';
+    var imgElement = document.createElement('img');
+    imgElement.src = imageUrl;
+    imgElement.style.position = 'fixed'; // 画像の位置を固定
+    imgElement.style.top = '400px'; // 画像の上からの位置を調整
+    imgElement.style.left = '150px'; // 画像の左からの位置を調整
+    imgElement.style.width = '200px'; // 画像の幅を調整
+    imgElement.style.height = '35px'; // 画像の高さを調整
+    document.body.appendChild(imgElement);
+
     var interval = setInterval(checkForSelectedSpan, 100);
+    var buttonClicked = false; // ボタンがすでにクリックされたかどうかを示すフラグ
 
     function checkForSelectedSpan() {
         var questionsItems = document.getElementById('questionsItems');
         var spans = questionsItems.querySelectorAll('span');
         var selectedSpan = Array.from(spans).find(span => span.classList.contains('selected'));
 
+        
         if (selectedSpan) {
             // 監視を停止
+            buttonA = document.getElementById('btn_answersAndGuidance')
+            buttonB = document.getElementById('btn_nextQuestion')
+            if (selectedSpan) {
+                if (buttonA){
+                    document.getElementById('btn_answersAndGuidance').click();
+                }else if (buttonB){
+                    document.getElementById('btn_nextQuestion').click();
+                }
+            }
             clearInterval(interval);
-            document.getElementById('btn_answersAndGuidance').click();
-            setTimeout(checkForOk, 100); // checkForOk 関数を呼び出す
-        }
-    }
-
-    function checkForOk() {
-        var correctImg = document.querySelector('img[src="/images/frontend/pc/ja/question/img.stamp.passed.png"]');
-        var incorrectImg = document.querySelector('img[src="/images/frontend/pc/ja/question/img.stamp.failed.png"]');
-
-        if (correctImg) {
-            alert('正解画像が表示されています。');
-        } else if (incorrectImg) {
-            alert('不正解画像が表示されています。');
         }
     }
 });
-
-
 
 
 
