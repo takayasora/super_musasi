@@ -1,10 +1,7 @@
 window.addEventListener('load', function () {
-    // GIF画像のURL
-    var gifImageUrl = 'https://raw.githubusercontent.com/takayasora/super_musasi/main/src/resource/Speedline_blue.gif';
+    // ここに背景画像を表示するプログラムを記載する
 
-    // GIF画像を背景として表示
-    document.body.style.backgroundImage = 'url(' + gifImageUrl + ')';
-
+    
     // PNGファイルを表示
     var imageUrl = 'https://github.com/takayasora/super_musasi/raw/main/src/resource/speedup.png';
     var imgElement = document.createElement('img');
@@ -25,17 +22,20 @@ window.addEventListener('load', function () {
         var spans = questionsItems.querySelectorAll('span');
         var selectedSpan = Array.from(spans).find(span => span.classList.contains('selected'));
 
+        
         if (selectedSpan) {
             // 監視を停止
-            var buttonA = document.getElementById('btn_answersAndGuidance');
-            var buttonB = document.getElementById('btn_nextQuestion');
+            buttonA = document.getElementById('btn_answersAndGuidance')
+            buttonA = document.getElementById('btn_answersAndGuidance')
+            buttonB = document.getElementById('btn_nextQuestion')
             
-            if (buttonA) {
-                buttonA.click();
-            } else if (buttonB) {
-                buttonB.click();
+            if (selectedSpan) {
+                if (buttonA){
+                    document.getElementById('btn_answersAndGuidance').click();
+                }else if (buttonB){
+                    document.getElementById('btn_nextQuestion').click();
+                }
             }
-
             clearInterval(interval);
         }
     }
