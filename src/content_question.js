@@ -1,6 +1,6 @@
 window.addEventListener('load', function () {
     // GIF画像のURL
-    var gifImageUrl = 'https://raw.githubusercontent.com/takayasora/super_musasi/main/src/resource/Speedline_blue.gif';
+    var gifImageUrl = 'https://raw.githubusercontent.com/takayasora/super_musasi/main/src/resource/sky.gif';
 
     // GIF画像を背景として表示
     document.body.style.backgroundImage = 'url(' + gifImageUrl + ')';
