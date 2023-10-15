@@ -8,14 +8,18 @@ https://github.com/takayasora/super_musasi/raw/main/src/resource/speedup.png
 というURLから取得した画像はどのHTMLの要素よりも上に表示した、
 
 [修正する機能]
-下記のURLの先にあるGif画像を背景として変更しなさい
+下記のURLの先にあるGif画像を背景として変更し、その際は画面いっぱいに拡大して表示されるようにしなさい。
 https://raw.githubusercontent.com/takayasora/super_musasi/main/src/resource/Speedline_blue.gif
+
 
 [javascript]
 window.addEventListener('load', function () {
-    // ここに背景画像を表示するプログラムを記載する
+    // GIF画像のURL
+    var gifImageUrl = 'https://raw.githubusercontent.com/takayasora/super_musasi/main/src/resource/Speedline_blue.gif';
 
-    
+    // GIF画像を背景として表示
+    document.body.style.backgroundImage = 'url(' + gifImageUrl + ')';
+
     // PNGファイルを表示
     var imageUrl = 'https://github.com/takayasora/super_musasi/raw/main/src/resource/speedup.png';
     var imgElement = document.createElement('img');
@@ -36,24 +40,22 @@ window.addEventListener('load', function () {
         var spans = questionsItems.querySelectorAll('span');
         var selectedSpan = Array.from(spans).find(span => span.classList.contains('selected'));
 
-        
         if (selectedSpan) {
             // 監視を停止
-            buttonA = document.getElementById('btn_answersAndGuidance')
-            buttonA = document.getElementById('btn_answersAndGuidance')
-            buttonB = document.getElementById('btn_nextQuestion')
+            var buttonA = document.getElementById('btn_answersAndGuidance');
+            var buttonB = document.getElementById('btn_nextQuestion');
             
-            if (selectedSpan) {
-                if (buttonA){
-                    document.getElementById('btn_answersAndGuidance').click();
-                }else if (buttonB){
-                    document.getElementById('btn_nextQuestion').click();
-                }
+            if (buttonA) {
+                buttonA.click();
+            } else if (buttonB) {
+                buttonB.click();
             }
+
             clearInterval(interval);
         }
     }
 });
+
 
 
 

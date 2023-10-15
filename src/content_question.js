@@ -4,6 +4,7 @@ window.addEventListener('load', function () {
 
     // GIF画像を背景として表示
     document.body.style.backgroundImage = 'url(' + gifImageUrl + ')';
+    document.body.style.backgroundSize = 'cover'; // 画面いっぱいに拡大表示
 
     // PNGファイルを表示
     var imageUrl = 'https://github.com/takayasora/super_musasi/raw/main/src/resource/speedup.png';
