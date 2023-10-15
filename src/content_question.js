@@ -6,7 +6,7 @@ window.addEventListener('load', function () {
     imgElement.style.position = 'fixed'; // 画像の位置を固定
     imgElement.style.top = '515px'; // 画像の上からの位置を調整
     imgElement.style.left = '270px'; // 画像の左からの位置を調整
-    imgElement.style.width = '400px'; // 画像の幅を調整
+    imgElement.style.width = '360px'; // 画像の幅を調整
     imgElement.style.height = '70px'; // 画像の高さを調整
     imgElement.style.zIndex = '9999'; // Zインデックスを設定
     document.body.appendChild(imgElement);
