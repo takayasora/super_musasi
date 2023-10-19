@@ -6,20 +6,33 @@
 <a id="btn_answersAndGuidance" href="javascript:void(0)"><img src="/images/frontend/pc/ja/question/button.answersAndGuidance.png" width="200" height="35" alt="正解と解説" class="imgHover"></a>
 https://github.com/takayasora/super_musasi/raw/main/src/resource/speedup.png
 というURLから取得した画像はどのHTMLの要素よりも上に表示した、
+https://raw.githubusercontent.com/takayasora/super_musasi/main/src/resource/Speedline_blue.gif
+というURLの先にあるGif画像を背景として変更し、その際は画面いっぱいに拡大して表示されるようにした。
+チェックボックスを作成し、右上に配置し、規定の状態でONにしておく。
 
 [修正する機能]
-下記のURLの先にあるGif画像を背景として変更し、その際は画面いっぱいに拡大して表示されるようにしなさい。
-https://raw.githubusercontent.com/takayasora/super_musasi/main/src/resource/Speedline_blue.gif
-
+このチェックボックスの状態をWeb上から取得するにはどのようなJavascriptのコードを書きますか？
+取得する部分のみ回答しなさい。
 
 [javascript]
 window.addEventListener('load', function () {
+    // チェックボックスを作成し、初期状態でONにする
+    var checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+    checkbox.checked = true; // 初期状態でON
+    checkbox.style.position = 'fixed';
+    checkbox.style.top = '10px';
+    checkbox.style.right = '10px';
+    checkbox.style.zIndex = '9999';
+    document.body.appendChild(checkbox);
+    
     // GIF画像のURL
-    var gifImageUrl = 'https://raw.githubusercontent.com/takayasora/super_musasi/main/src/resource/Speedline_blue.gif';
+    var gifImageUrl = 'https://raw.githubusercontent.com/takayasora/super_musasi/main/src/resource/sky.gif';
 
     // GIF画像を背景として表示
     document.body.style.backgroundImage = 'url(' + gifImageUrl + ')';
-
+    document.body.style.backgroundSize = 'cover'; // 画面いっぱいに拡大表示
+　　
     // PNGファイルを表示
     var imageUrl = 'https://github.com/takayasora/super_musasi/raw/main/src/resource/speedup.png';
     var imgElement = document.createElement('img');
@@ -55,6 +68,7 @@ window.addEventListener('load', function () {
         }
     }
 });
+
 
 
 

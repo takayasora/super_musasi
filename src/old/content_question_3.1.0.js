@@ -1,14 +1,4 @@
 window.addEventListener('load', function () {
-    // チェックボックスを作成し、初期状態でONにする
-    var checkbox = document.createElement('input');
-    checkbox.type = 'checkbox';
-    checkbox.checked = true; // 初期状態でON
-    checkbox.style.position = 'fixed';
-    checkbox.style.top = '10px';
-    checkbox.style.right = '10px';
-    checkbox.style.zIndex = '9999';
-    document.body.appendChild(checkbox);
-    
     // GIF画像のURL
     var gifImageUrl = 'https://raw.githubusercontent.com/takayasora/super_musasi/main/src/resource/sky.gif';
 
